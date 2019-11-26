@@ -11,7 +11,7 @@ public class Main {
 		List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6);
 
 		// Predicado
-		lista.stream().filter(getPredicado()).forEach(getForEach());
+		lista.stream().filter(new MiPredicado()).forEach(getForEach());
 	}
 
 	public static Consumer<Integer> getForEach() {
@@ -23,14 +23,11 @@ public class Main {
 			}
 		};
 	}
+}
 
-	public static Predicate<Integer> getPredicado() {
-		return new Predicate<Integer>() {
-
-			@Override
-			public boolean test(Integer t) {
-				return t % 2 == 0;
-			}
-		};
+class MiPredicado implements Predicate<Integer> {
+	@Override
+	public boolean test(Integer t) {
+		return t % 2 == 0;
 	}
 }
