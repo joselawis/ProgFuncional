@@ -12,7 +12,7 @@ public class Main {
 
 		// lista.stream().filter(((Predicate<Integer>)t -> t % 2 == 0).negate()).forEach(getForEach());
 		// lista.stream().filter(t -> t % 2 == 0).forEach(getForEach());
-		lista.stream().filter(t -> t % 2 == 0).forEach(t -> System.out.println(t));
+		lista.stream().filter(t -> t % 2 == 0).forEach(System.out::println);
 	}
 
 	public static Consumer<Integer> getForEach() {
