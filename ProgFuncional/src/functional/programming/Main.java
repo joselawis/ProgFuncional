@@ -72,9 +72,22 @@ public class Main {
 					.reduce(0, Integer::sum);
 		
 		// Sumatorio con summaryStatistics
-		listaPersonas.stream()
+		long suma = listaPersonas.stream()
 					.mapToInt(Persona::getEdad)
 					.summaryStatistics().getSum();
+		
+		System.out.println(suma);
+		
+		// Listar los nombres
+		listaPersonas.stream()
+					.map(Persona::getNombre)
+					.reduce((acc, curr) -> acc + ", "+ curr).ifPresent(System.out::println);
+		
+		// Otra forma de listar los nombres
+		String nombres = listaPersonas.stream()
+								.map(Persona::getNombre)
+								.collect(Collectors.joining(", "));
+		System.out.println(nombres);
 	}
 	
 	// Se le puede llamar como MethodReference ya que funciona como un Function tiene una entrada y una salida
