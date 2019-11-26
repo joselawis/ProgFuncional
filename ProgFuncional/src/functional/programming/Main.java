@@ -17,6 +17,14 @@ public class Main {
 			.filter(t -> t % 2 == 0) 		// Predicate
 			.map(Main::cuadradoNumero)		// Function
 			.forEach(System.out::println);	// Consumer
+		
+		Try.of(() -> {
+			int i = 4/2;
+			int j = 4/0;
+		})
+		.onFailure(e -> System.out.println("error!!"))
+		.onComplete(n -> System.out.println("Fin!"))
+		.tryIt();
 	}
 	
 	// Se le puede llamar como MethodReference ya que funciona como un Function tiene una entrada y una salida
