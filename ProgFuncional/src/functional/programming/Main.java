@@ -10,7 +10,9 @@ public class Main {
 	public static void main(String[] args) {
 		List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6);
 
-		lista.stream().filter(((Predicate<Integer>)t -> t % 2 == 0).negate()).forEach(getForEach());
+		// lista.stream().filter(((Predicate<Integer>)t -> t % 2 == 0).negate()).forEach(getForEach());
+		// lista.stream().filter(t -> t % 2 == 0).forEach(getForEach());
+		lista.stream().filter(t -> t % 2 == 0).forEach(t -> System.out.println(t));
 	}
 
 	public static Consumer<Integer> getForEach() {
