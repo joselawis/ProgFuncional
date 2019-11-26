@@ -43,7 +43,7 @@ public class Main {
 			new Persona("Maria",Genero.MUJER, 27, new ArrayList<String>(Arrays.asList("678123456", "777123456"))),
 			new Persona("Natalia",Genero.MUJER, 24, new ArrayList<String>(Arrays.asList("690123456")))
 			));
-		
+		// www.baeldung.com
 		
 		// Media edad por genero
 		Map<Genero, Double> e1 = listaPersonas.stream().collect(Collectors.groupingBy(Persona::getGenero, Collectors.averagingInt(Persona::getEdad)));
