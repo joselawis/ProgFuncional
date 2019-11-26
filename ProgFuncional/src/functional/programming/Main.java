@@ -12,7 +12,16 @@ public class Main {
 
 		// lista.stream().filter(((Predicate<Integer>)t -> t % 2 == 0).negate()).forEach(getForEach());
 		// lista.stream().filter(t -> t % 2 == 0).forEach(getForEach());
-		lista.stream().filter(t -> t % 2 == 0).forEach(System.out::println);
+		// lista.stream().filter(t -> t % 2 == 0).forEach(System.out::println);
+		lista.stream()
+			.filter(t -> t % 2 == 0) 		// Predicate
+			.map(Main::cuadradoNumero)		// Function
+			.forEach(System.out::println);	// Consumer
+	}
+	
+	// Se le puede llamar como MethodReference ya que funciona como un Function tiene una entrada y una salida
+	public static double cuadradoNumero (Integer numero) {
+		return Math.pow(numero, 2);
 	}
 
 	public static Consumer<Integer> getForEach() {
