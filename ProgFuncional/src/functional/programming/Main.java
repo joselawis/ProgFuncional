@@ -10,8 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6);
 
-		// Predicado
-		lista.stream().filter(new MiPredicado()).forEach(getForEach());
+		lista.stream().filter(t -> t % 2 == 0).forEach(getForEach());
 	}
 
 	public static Consumer<Integer> getForEach() {
