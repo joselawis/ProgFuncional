@@ -53,11 +53,28 @@ public class Main {
 		// Mujer mas joven
 		listaPersonas.stream().filter(p->Genero.MUJER == p.getGenero()).min(Comparator.comparing(Persona::getEdad)).ifPresent(p -> System.out.println(p.nombre));
 		// Todos los numeros son de red movil?
-		Boolean b = listaPersonas.stream().map(Persona::getTelefonos)
+		boolean isRedMovil = listaPersonas.stream().map(Persona::getTelefonos)
 									.flatMap(Collection::stream)
 									.map(Object::toString)
 									.allMatch(s -> s.startsWith("6") || s.startsWith("7"));
-		System.out.println(b);
+		System.out.println(isRedMovil);
+		
+		
+		// Sumatorio edad con mapToInt
+		listaPersonas.stream()  					// tenemos un Stream<Personas>
+					.mapToInt(Persona::getEdad)		// Convertimos el Stream<Persona> a Stream<Integer>
+					.sum();
+		
+		// Sumatorio sin mapToInt
+		listaPersonas.stream()
+					.map(Persona::getEdad)
+					//.reduce(0, (acumulado,edad) -> acumulado+edad);		// en cada iteracion al acumulado se le sumara la edad
+					.reduce(0, Integer::sum);
+		
+		// Sumatorio con summaryStatistics
+		listaPersonas.stream()
+					.mapToInt(Persona::getEdad)
+					.summaryStatistics().getSum();
 	}
 	
 	// Se le puede llamar como MethodReference ya que funciona como un Function tiene una entrada y una salida
