@@ -98,6 +98,7 @@ public class Main {
 	public static void ejemploEnumCalculator() {
 		// Ejemplo de suma de dos doubles
 		System.out.println(Calculator.PLUS.apply(1d, 256d));
+		System.out.println(Calculator.POW.apply(4d));
 		
 		// Iteramos sobre los operadores y aplicamos
 		Arrays.stream(Calculator.values())
