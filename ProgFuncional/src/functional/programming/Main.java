@@ -10,11 +10,18 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import functional.programming.enums.Calculator;
 import functional.programming.enums.Genero;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		//ejemploLista();
+		//ejemploPersona();
+		ejemploEnumCalculator();
+	}
+	public static void ejemploLista() {
 		List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6);
 
 		// lista.stream().filter(((Predicate<Integer>)t -> t % 2 == 0).negate()).forEach(getForEach());
@@ -32,8 +39,6 @@ public class Main {
 		.onFailure(e -> System.out.println("error!!"))
 		.onComplete(n -> System.out.println("Fin!"))
 		.tryIt();
-		
-		ejemploPersona();
 	}
 	
 	public static void ejemploPersona() {
@@ -88,6 +93,15 @@ public class Main {
 								.map(Persona::getNombre)
 								.collect(Collectors.joining(", "));
 		System.out.println(nombres);
+	}
+	
+	public static void ejemploEnumCalculator() {
+		// Ejemplo de suma de dos doubles
+		System.out.println(Calculator.PLUS.apply(1d, 256d));
+		
+		// Iteramos sobre los operadores y aplicamos
+		Arrays.stream(Calculator.values())
+				.forEach(op -> System.out.println("Operador " + op.getSymbol() + " para 2 y 4: " + op.apply(2d, 4d)));
 	}
 	
 	// Se le puede llamar como MethodReference ya que funciona como un Function tiene una entrada y una salida
