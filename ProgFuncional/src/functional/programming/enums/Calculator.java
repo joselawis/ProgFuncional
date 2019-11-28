@@ -1,34 +1,33 @@
 package functional.programming.enums;
 
-import java.util.function.BiFunction;
+import functional.programming.functions.CustomBinaryFunction;
 
 // Ejemplo de enum con functions lambda
-public enum Calculator implements BiFunction<Double, Double, Double> {
+public enum Calculator implements CustomBinaryFunction {
 	PLUS    ("+", (l, r) -> l + r),
     MINUS   ("-", (l, r) -> l - r),
     MULTIPLY("*", (l, r) -> l * r),
     DIVIDE  ("/", (l, r) -> l / r),
-    POW 	("^2", (l, r) -> l * l);
+    POW 	("^", (l, r) -> Math.pow(l, r));
 
 	private final String symbol;
-	private final BiFunction<Double, Double, Double> binaryFunction;
+	private final CustomBinaryFunction biFunction;
 
-	private Calculator(final String symbol, final BiFunction<Double, Double, Double> binaryFunction) {
+	private Calculator(final String symbol, final CustomBinaryFunction biFunction) {
 		this.symbol = symbol;
-		this.binaryFunction = binaryFunction;
+		this.biFunction = biFunction;
 	}
 
 	public String getSymbol() {
 		return symbol;
 	}
 
-	// Metodo a implementar del tipo (T,T)->T
 	@Override
-	public Double apply(Double t, Double u) {
-		return binaryFunction.apply(t, u);
+	public double apply(double l, double r) {
+		return biFunction.apply(l, r);
 	}
-
-	public Double apply(Double t) {
-		return binaryFunction.apply(t, t);
+	
+	public double apply(double l) {
+		return biFunction.apply(l, l);
 	}
 }
